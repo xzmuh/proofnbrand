@@ -1,0 +1,310 @@
+{
+  "_comment": "Edite este arquivo para mudar o alvo. enabled=false desliga sem apagar.",
+  "cities": [
+    {
+      "name": "Tampa",
+      "state": "Florida",
+      "country": "US",
+      "currency": "USD",
+      "enabled": true
+    },
+    {
+      "name": "Sarasota",
+      "state": "Florida",
+      "country": "US",
+      "currency": "USD",
+      "enabled": true
+    },
+    {
+      "name": "Charlotte",
+      "state": "North Carolina",
+      "country": "US",
+      "currency": "USD",
+      "enabled": true
+    },
+    {
+      "name": "Boise",
+      "state": "Idaho",
+      "country": "US",
+      "currency": "USD",
+      "enabled": true
+    },
+    {
+      "name": "Scottsdale",
+      "state": "Arizona",
+      "country": "US",
+      "currency": "USD",
+      "enabled": false
+    },
+    {
+      "name": "Raleigh",
+      "state": "North Carolina",
+      "country": "US",
+      "currency": "USD",
+      "enabled": false
+    },
+    {
+      "name": "Dublin",
+      "state": "",
+      "country": "IE",
+      "currency": "EUR",
+      "enabled": true
+    },
+    {
+      "name": "Cork",
+      "state": "",
+      "country": "IE",
+      "currency": "EUR",
+      "enabled": false
+    },
+    {
+      "name": "Amsterdam",
+      "state": "",
+      "country": "NL",
+      "currency": "EUR",
+      "enabled": true
+    },
+    {
+      "name": "Rotterdam",
+      "state": "",
+      "country": "NL",
+      "currency": "EUR",
+      "enabled": false
+    },
+    {
+      "name": "Lisboa",
+      "state": "",
+      "country": "PT",
+      "currency": "EUR",
+      "enabled": false
+    },
+    {
+      "name": "Porto",
+      "state": "",
+      "country": "PT",
+      "currency": "EUR",
+      "enabled": false
+    },
+    {
+      "name": "Valencia",
+      "state": "",
+      "country": "ES",
+      "currency": "EUR",
+      "enabled": false
+    },
+    {
+      "name": "Milano",
+      "state": "",
+      "country": "IT",
+      "currency": "EUR",
+      "enabled": false
+    },
+    {
+      "name": "Curitiba",
+      "state": "Parana",
+      "country": "BR",
+      "currency": "BRL",
+      "enabled": true
+    },
+    {
+      "name": "Florianopolis",
+      "state": "Santa Catarina",
+      "country": "BR",
+      "currency": "BRL",
+      "enabled": true
+    },
+    {
+      "name": "Goiania",
+      "state": "Goias",
+      "country": "BR",
+      "currency": "BRL",
+      "enabled": false
+    },
+    {
+      "name": "Campinas",
+      "state": "Sao Paulo",
+      "country": "BR",
+      "currency": "BRL",
+      "enabled": false
+    },
+    {
+      "name": "Porto Alegre",
+      "state": "Rio Grande do Sul",
+      "country": "BR",
+      "currency": "BRL",
+      "enabled": false
+    },
+    {
+      "name": "Belo Horizonte",
+      "state": "Minas Gerais",
+      "country": "BR",
+      "currency": "BRL",
+      "enabled": false
+    },
+    {
+      "name": "Rio de Janeiro",
+      "state": "Rio de Janeiro",
+      "country": "BR",
+      "currency": "BRL",
+      "enabled": false
+    },
+    {
+      "name": "Sao Paulo",
+      "state": "Sao Paulo",
+      "country": "BR",
+      "currency": "BRL",
+      "enabled": false
+    }
+  ],
+  "_comment_alemanha": "Alemanha/Austria ficam de fora de proposito: sao as jurisdicoes mais duras em e-mail frio B2B (UWG + GDPR). Adicione so quando tiver processo de opt-in.",
+  "categories": [
+    {
+      "key": "dentist",
+      "label": "Odontologia",
+      "value_tier": "high",
+      "filters": [
+        "[\"amenity\"=\"dentist\"]",
+        "[\"healthcare\"=\"dentist\"]"
+      ]
+    },
+    {
+      "key": "estetica",
+      "label": "Estetica/Beleza",
+      "value_tier": "high",
+      "filters": [
+        "[\"shop\"=\"beauty\"]",
+        "[\"leisure\"=\"spa\"]",
+        "[\"shop\"=\"massage\"]",
+        "[\"healthcare\"=\"cosmetic\"]"
+      ]
+    },
+    {
+      "key": "clinic",
+      "label": "Clinica/Consultorio",
+      "value_tier": "high",
+      "filters": [
+        "[\"amenity\"=\"doctors\"]",
+        "[\"healthcare\"=\"clinic\"]"
+      ]
+    },
+    {
+      "key": "architect",
+      "label": "Arquitetura/Interiores",
+      "value_tier": "high",
+      "filters": [
+        "[\"office\"=\"architect\"]",
+        "[\"craft\"=\"interior_decorator\"]",
+        "[\"shop\"=\"interior_decoration\"]"
+      ]
+    },
+    {
+      "key": "photographer",
+      "label": "Fotografia",
+      "value_tier": "high",
+      "filters": [
+        "[\"craft\"=\"photographer\"]",
+        "[\"shop\"=\"photo\"]"
+      ]
+    },
+    {
+      "key": "veterinary",
+      "label": "Veterinaria",
+      "value_tier": "high",
+      "filters": [
+        "[\"amenity\"=\"veterinary\"]"
+      ]
+    },
+    {
+      "key": "physio",
+      "label": "Fisioterapia/Pilates",
+      "value_tier": "high",
+      "filters": [
+        "[\"healthcare\"=\"physiotherapist\"]"
+      ]
+    },
+    {
+      "key": "tattoo",
+      "label": "Tatuagem",
+      "value_tier": "mid",
+      "filters": [
+        "[\"shop\"=\"tattoo\"]"
+      ]
+    },
+    {
+      "key": "salon",
+      "label": "Salao/Barbearia",
+      "value_tier": "mid",
+      "filters": [
+        "[\"shop\"~\"^(hairdresser|barber)$\"]"
+      ]
+    },
+    {
+      "key": "gym",
+      "label": "Academia/Estudio",
+      "value_tier": "mid",
+      "filters": [
+        "[\"leisure\"=\"fitness_centre\"]"
+      ]
+    },
+    {
+      "key": "hotel",
+      "label": "Hotel/Pousada",
+      "value_tier": "high",
+      "filters": [
+        "[\"tourism\"~\"^(hotel|guest_house)$\"]"
+      ]
+    },
+    {
+      "key": "lawyer",
+      "label": "Advocacia",
+      "value_tier": "high",
+      "filters": [
+        "[\"office\"=\"lawyer\"]"
+      ]
+    },
+    {
+      "key": "accountant",
+      "label": "Contabilidade",
+      "value_tier": "high",
+      "filters": [
+        "[\"office\"=\"accountant\"]",
+        "[\"office\"=\"tax_advisor\"]"
+      ]
+    },
+    {
+      "key": "estate_agent",
+      "label": "Imobiliaria",
+      "value_tier": "high",
+      "filters": [
+        "[\"office\"=\"estate_agent\"]"
+      ]
+    },
+    {
+      "key": "restaurant",
+      "label": "Restaurante",
+      "value_tier": "mid",
+      "filters": [
+        "[\"amenity\"=\"restaurant\"]"
+      ]
+    },
+    {
+      "key": "car_repair",
+      "label": "Oficina independente",
+      "value_tier": "mid",
+      "filters": [
+        "[\"shop\"=\"car_repair\"]"
+      ]
+    }
+  ],
+  "enabled_categories": [
+    "dentist",
+    "estetica",
+    "clinic",
+    "architect",
+    "photographer",
+    "veterinary",
+    "car_repair"
+  ],
+  "_comment_brasil": "Sao Paulo e Rio ficam desligados por padrao: a bbox e enorme e o Overpass costuma estourar o timeout. Prefira colher por cidade media, ou rode --city 'Sao Paulo' sozinho.",
+  "_comment_categorias": "Priorizamos quem VENDE PELO VISUAL: odonto, estetica, arquitetura, fotografia. Esse tipo de negocio precisa mostrar antes/depois, portfolio e prova social, entao site ruim doi no bolso dele e ele entende o valor. Concessionaria e franquia ficam de fora: o site e decidido na matriz."
+}

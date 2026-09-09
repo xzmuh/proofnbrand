@@ -1,0 +1,3 @@
+requests>=2.31
+# opcional: só necessário quando MAKESITES_DB_URL apontar para Postgres/Neon
+# psycopg[binary]>=3.1

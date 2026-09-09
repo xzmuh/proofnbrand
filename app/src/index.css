@@ -1,0 +1,122 @@
+@import 'tailwindcss';
+
+/* ---------------------------------------------------------------------------
+   proof-n-brand — design tokens
+
+   Style:      Data-Dense Dashboard (ui-ux-pro-max), density 8/10
+   Tipografia: Outfit (display/números) + Inter (UI) — pareamento "Geometric Modern"
+   Cor:        lime da referência = MARCA (acento de UI), nunca cor de dado.
+               Cores de dado saem das paletas validadas abaixo.
+--------------------------------------------------------------------------- */
+
+@theme {
+  /* --- marca / UI ------------------------------------------------------- */
+  --color-brand:        #c6f73e;
+  --color-brand-deep:   #a8dc1b;
+  --color-brand-soft:   #e4fba6;
+  --color-brand-wash:   #f2fdd8;
+
+  --color-ink:          #141414;
+  --color-ink-soft:     #2b2b2b;
+
+  --color-surface:      #f4f4f5;
+  --color-card:         #ffffff;
+  --color-line:         #eaeaea;
+  --color-line-strong:  #dcdcdc;
+
+  --color-body:         #1a1a1a;
+  --color-muted:        #6e6e6e;
+  --color-muted-soft:   #9a9a9a;
+
+  /* --- dado: rampa ORDINAL (tiers D→A) --------------------------------- *
+   * Um hue só, L monotônica. Validada com validate_palette.js --ordinal:
+   * monotone PASS · gaps ΔL ≥ 0.06 PASS · ponta clara 2.12:1 PASS · hue 4° PASS
+   * Mais escuro = score mais alto. O lime da marca tem 1.09:1 contra branco,
+   * então ele é acento de UI, jamais preenchimento de dado.               */
+  --color-tier-d:       #8fbf1e;
+  --color-tier-c:       #6e9917;
+  --color-tier-b:       #4f7310;
+  --color-tier-a:       #324d09;
+
+  /* --- dado: paleta CATEGÓRICA (composição da base) -------------------- *
+   * Slots 1–5 documentados. Validados em light: banda L PASS · croma PASS ·
+   * CVD ΔE 9.1 PASS · visão normal ΔE 19.6 PASS · contraste WARN → alívio
+   * obrigatório, atendido com legenda + rótulos diretos + números visíveis. */
+  --color-series-1:     #2a78d6;
+  --color-series-2:     #eb6834;
+  --color-series-3:     #1baf7a;
+  --color-series-4:     #eda100;
+  --color-series-5:     #e87ba4;
+
+  /* --- status (significado reservado, sempre com ícone + rótulo) -------- */
+  --color-critical:     #e34948;
+  --color-warning:      #eda100;
+  --color-good:         #1baf7a;
+
+  --font-display: 'Outfit', ui-sans-serif, system-ui, sans-serif;
+  --font-sans: 'Inter', ui-sans-serif, system-ui, -apple-system, sans-serif;
+
+  --radius-card: 26px;
+  --radius-inner: 18px;
+
+  /* density 8/10 — escala compacta de dashboard */
+  --spacing-gap: 14px;
+}
+
+@layer base {
+  html {
+    -webkit-font-smoothing: antialiased;
+  }
+
+  body {
+    background: var(--color-surface);
+    color: var(--color-body);
+    font-family: var(--font-sans);
+    font-size: 14px;
+    line-height: 1.5;
+    margin: 0;
+  }
+
+  /* Números alinham verticalmente em tabelas e eixos; nunca no número-herói
+     (tabular-nums deixa um valor grande com espaçamento frouxo). */
+  .tnum {
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* O número-herói usa a MESMA sans do resto — uma face display nele lê como
+     decoração fora de marca. Outfit fica só nos títulos. E figuras
+     proporcionais, não tabulares: tabular-nums deixa um número grande frouxo. */
+  .hero-num {
+    font-family: var(--font-sans);
+    font-variant-numeric: proportional-nums;
+    letter-spacing: -0.03em;
+  }
+
+  /* Foco sempre visível — item da checklist de pré-entrega. */
+  :focus-visible {
+    outline: 2px solid var(--color-ink);
+    outline-offset: 2px;
+    border-radius: 6px;
+  }
+
+  ::selection {
+    background: var(--color-brand);
+    color: var(--color-ink);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Barra de rolagem discreta, coerente com a densidade do painel. */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-line-strong) transparent;
+}

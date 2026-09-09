@@ -1,0 +1,22 @@
+# --- dados coletados: NUNCA versionar ---
+# leads.db e out/ tem nome, telefone, e-mail e endereco de empresas reais.
+# Sob LGPD/GDPR o contato de um profissional autonomo e dado pessoal; uma lista
+# raspada num repositorio publico e exposicao desnecessaria. O workflow do
+# GitHub Actions publica isso como artefato privado do repo, nao como commit.
+leads.db
+leads.db-journal
+leads.db-wal
+leads.db-shm
+out/
+
+# segredos
+.env
+
+# python
+__pycache__/
+*.pyc
+
+# node / build
+node_modules/
+web/dist/
+.cache/

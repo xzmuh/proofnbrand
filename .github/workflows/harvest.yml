@@ -1,0 +1,78 @@
+name: Colheita de leads
+
+on:
+  schedule:
+    # 06:10 UTC = 03:10 em Brasilia. Fora do horario de pico das APIs publicas.
+    - cron: "10 6 * * *"
+  workflow_dispatch:
+    inputs:
+      city:
+        description: "Rodar so uma cidade (vazio = todas as ativas no config)"
+        required: false
+        default: ""
+      psi_limit:
+        description: "Quantos finalistas vao ao PageSpeed"
+        required: false
+        default: "40"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: harvest
+  cancel-in-progress: false
+
+jobs:
+  harvest:
+    runs-on: ubuntu-latest
+    timeout-minutes: 330
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - run: pip install -r requirements.txt
+
+      # O banco vive no cache entre execucoes, entao o Overpass so devolve
+      # o que mudou e os sites ja auditados nao sao rechecados a toa.
+      # Ao migrar para o Neon, basta apagar estes dois steps e definir
+      # o secret PNB_DB_URL.
+      - name: Restaurar banco
+        uses: actions/cache/restore@v4
+        with:
+          path: leads.db
+          key: leads-db-${{ github.run_id }}
+          restore-keys: leads-db-
+
+      - name: Rodar pipeline
+        env:
+          PSI_API_KEY: ${{ secrets.PSI_API_KEY }}
+          PNB_DB_URL: ${{ secrets.PNB_DB_URL }}
+          PNB_UA: "proof-n-brand/0.1 (github actions; ${{ github.repository }})"
+        run: |
+          python -m proofnbrand.cli run \
+            ${{ inputs.city && format('--city "{0}"', inputs.city) || '' }} \
+            --psi-limit ${{ inputs.psi_limit || 40 }}
+
+      - name: Salvar banco
+        if: always()
+        uses: actions/cache/save@v4
+        with:
+          path: leads.db
+          key: leads-db-${{ github.run_id }}
+
+      - name: Publicar leads como artefato
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: leads-${{ github.run_number }}
+          path: out/
+          retention-days: 30
+
+      # Os leads NAO sao commitados de proposito: nome, telefone e e-mail de
+      # empresas reais nao devem virar historico publico do repositorio. O
+      # artefato acima ja entrega a lista, com o mesmo controle de acesso do repo.
